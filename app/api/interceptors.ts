@@ -11,7 +11,7 @@ import { IS_PRODUCTION } from '@/configs/constants'
 
  
 const instance = axios.create({
-	baseURL: REACT_APP_URL ,
+	baseURL: REACT_APP_SERVER_URL ,
 	headers: {
 		'Content-Type': 'application/json',
 	},
