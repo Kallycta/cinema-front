@@ -16,7 +16,7 @@ const ActorPage: NextPage<IActorPage> = ({ actor, movies }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	try {
-		const { data: actors } = await ActorService.getAll()
+		const { data: actors } = await ActorService.getAll();
 
 		const paths = actors.map((g) => ({
 			params: { slug: g.slug },
