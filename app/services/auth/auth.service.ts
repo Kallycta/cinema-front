@@ -2,7 +2,7 @@ import { getContentType } from 'api/api.helpers'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-import { REACT_APP_URL, getAuthUrl } from '@/configs/api.config'
+import { getAuthUrl, REACT_APP_SERVER_URL } from '@/configs/api.config'
 
 import { IAuthResponse } from '@/store/user/user.interface'
 
@@ -11,7 +11,7 @@ import { removeTokensStorage, saveToStorage } from './auth.helper'
 export const AuthService = {
 	async register(email: string, password: string) {
 		const response = await axios.post<IAuthResponse>(
-			`${REACT_APP_URL}${getAuthUrl('/register')}`,
+			`${REACT_APP_SERVER_URL}${getAuthUrl('/register')}`,
 			{
 				email,
 				password,
@@ -26,7 +26,7 @@ export const AuthService = {
 	},
 	async login(email: string, password: string) {
 		const response = await axios.post<IAuthResponse>(
-			`${REACT_APP_URL}${getAuthUrl('/login')}`,
+			`${REACT_APP_SERVER_URL}${getAuthUrl('/login')}`,
 			{
 				email,
 				password,
@@ -46,7 +46,7 @@ export const AuthService = {
 	async getNewTokens() {
 		const refreshToken = Cookies.get('refreshToken')
 		const response = await axios.post<IAuthResponse>(
-			`${REACT_APP_URL}${getAuthUrl('/login/access-token')}`,
+			`${REACT_APP_SERVER_URL}${getAuthUrl('/login/access-token')}`,
 			{
 				refreshToken,
 			},

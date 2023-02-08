@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 import { removeTokensStorage } from '@/services/auth/auth.helper'
 import { AuthService } from '@/services/auth/auth.service'
 
-import { REACT_APP_SERVER_URL, REACT_APP_URL } from '@/configs/api.config'
+import { REACT_APP_SERVER_URL } from '@/configs/api.config'
 
 import { errorCatch } from './api.helpers'
 import { IS_PRODUCTION } from '@/configs/constants'
@@ -54,7 +54,7 @@ instance.interceptors.response.use(
 export default instance
 
 export const axiosClassic = axios.create({
-	baseURL: IS_PRODUCTION ? REACT_APP_SERVER_URL : REACT_APP_URL,
+	baseURL: REACT_APP_SERVER_URL ,
 	headers: {
 		'Content-Type': 'application/json',
 	},

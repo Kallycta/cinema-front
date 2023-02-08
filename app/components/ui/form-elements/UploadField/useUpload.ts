@@ -4,6 +4,7 @@ import { useMutation } from 'react-query'
 import { FileService } from '@/services/file/file.service'
 
 import { toastError } from '@/utils/api/withToastrErrorRedux'
+import { REACT_APP_SERVER_URL } from '@/configs/api.config'
 
 type TypeUpload = (
 	onChange: (...event: any[]) => void,
@@ -15,10 +16,9 @@ type TypeUpload = (
 
 export const useUpload: TypeUpload = (onChange, folder) => {
 	const [isLoading, setIsLoading] = useState(false)
-
 	const { mutateAsync } = useMutation(
 		'upload file',
-		(data: FormData) => FileService.upload(data, folder),
+		(data: FormData) => FileService.upload(data, `${folder}`),
 		{
 			onSuccess({ data }) {
 				onChange(data[0].url)
